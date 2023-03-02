@@ -10,13 +10,12 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Home Page</title>
+    <title>{{title}}</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/csjs.js"></script>
   </head>
   <body>
-    <h1>{{ title }}</h1>
-    <h2>{{ message }}</h2>
-    <h4>Created by: {{ author }}</h4>
+    {{>header}}
+    <h1>{{message}}</h1>
+    {{>footer}}
   </body>
 </html>
