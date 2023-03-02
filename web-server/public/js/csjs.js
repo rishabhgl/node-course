@@ -1,0 +1,1 @@
+console.log('The front end of the application has been loaded on the client.');
