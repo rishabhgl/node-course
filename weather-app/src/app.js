@@ -2,6 +2,8 @@ const path = require('path');
 
 const express = require('express');
 const hbs = require('hbs');
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/forecast');
 
 const assets = path.join(__dirname, '../public');
 const viewTemplates = path.join(__dirname, '../templates/views');
@@ -38,10 +40,34 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
-    res.send({
-        forecast: 'The weather has been obnoxious lately.',
-        location: 'Patiala'
-    });
+    const target = req.query.address;
+    if (!target){
+        res.send({
+            error: "Error! Please provide a address for forecast!"
+        });
+        return;
+    }
+    geocode(target, (geoError, geoResponse) => {
+        if(geoError){
+            res.send({
+                error: geoError
+            });
+            return;
+        } 
+        forecast(geoResponse, (forecastError, forecast) => {
+            if(forecastError){
+                res.send({
+                    error: forecastError
+                });
+                return;
+            }
+            res.send({
+                forecast,
+                location: geoResponse.name,
+                address: target
+            })
+        })
+    })
 })
 
 app.get('/help/*', (req, res) => {

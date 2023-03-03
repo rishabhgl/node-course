@@ -11,12 +11,21 @@
       content="width=device-width, initial-scale=1.0"
     />
     <title>Home Page</title>
+    <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/csjs.js"></script>
   </head>
   <body>
-    {{>header}}
-    <h2>{{ message }}</h2>
+    <div class="main-content">
+      {{>header}}
+      <h2>{{ message }}</h2>
+      <form>
+        <input type="text" placeholder="Location">
+        <button>Get Weather</button>
+      </form>
+      <p id="m1"></p>
+      <p id="m2"></p>
+    </div>
     {{>footer}}
+    <script src="/js/csjs.js"></script>
   </body>
 </html>

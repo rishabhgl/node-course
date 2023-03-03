@@ -11,12 +11,15 @@
       content="width=device-width, initial-scale=1.0"
     />
     <title>About Us</title>
+    <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
-    {{>header }}
-    <h2>{{ message }}</h2>
-    <img src="/img/rishabhPassptPhoto (002).jpg" alt="Image not found">
+    <div class="main-content">
+      {{>header }}
+      <h2>{{ message }}</h2>
+      <img class = "portrait" src="/img/rishabhPassptPhoto (002).jpg" alt="Image not found">
+    </div>
     {{>footer }}
   </body>
 </html>
